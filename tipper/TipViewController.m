@@ -7,6 +7,7 @@
 //
 
 #import "TipViewController.h"
+#import "SettingsViewController.h"
 
 @interface TipViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *billTextField;
@@ -16,6 +17,7 @@
 
 - (IBAction)onTap:(id)sender;
 - (void) updateValues;
+- (void) onSettingsButton;
 
 @end
 
@@ -23,8 +25,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
     // Do any additional setup after loading the view from its nib.
+
+    [super viewDidLoad];
+ 
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    int index = (int)[defaults integerForKey:@"defaultTip"];
+    [self.tipControl setSelectedSegmentIndex:index];
+    [self updateValues];
     self.title = @"Tip Calculator";
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +51,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
+    // Get the new ` controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 */
@@ -55,5 +69,9 @@
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
     self.totalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
+}
+
+-(void) onSettingsButton {
+    [self.navigationController pushViewController: [[SettingsViewController alloc] init] animated: YES];
 }
 @end
