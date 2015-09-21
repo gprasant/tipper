@@ -45,16 +45,8 @@
                         <rect key="frame" x="36" y="162" width="89" height="21"/>
                     </variation>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iZw-mI-FhH">
-                    <rect key="frame" x="286" y="33" width="97" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="236" y="113" width="97" height="30"/>
-                    </variation>
-                </textField>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="an1-7Z-adc">
-                    <rect key="frame" x="40" y="123" width="237" height="2"/>
+                    <rect key="frame" x="40" y="121" width="343" height="4"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="36" y="202" width="297" height="4"/>
@@ -95,6 +87,14 @@
                         <action selector="onTap:" destination="-1" eventType="valueChanged" id="Alj-wP-FDO"/>
                     </connections>
                 </segmentedControl>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iZw-mI-FhH">
+                    <rect key="frame" x="286" y="27" width="97" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="236" y="113" width="97" height="30"/>
+                    </variation>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="0.86435425041516167" green="0.93198961638482369" blue="0.96863919496536255" alpha="1" colorSpace="calibratedRGB"/>
             <gestureRecognizers/>

@@ -37,6 +37,9 @@
     int index = (int)[defaults integerForKey:@"defaultTip"];
     [self.tipControl setSelectedSegmentIndex:index];
     [self updateValues];
+    if ([[self.billTextField text] isEqual:@""] ) {
+        [self.billTextField becomeFirstResponder];
+    }
     self.title = @"Tip Calculator";
     
 }
@@ -67,9 +70,15 @@
     float tipAmount = billAmount * [tipValues[self.tipControl.selectedSegmentIndex] floatValue];
     float totalAmount = billAmount + tipAmount;
     
-    self.tipLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
-    self.totalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
+    
+    // set formatted locale strings
+    NSNumberFormatter* nf = [[NSNumberFormatter alloc] init];
+    [nf setNumberStyle:NSNumberFormatterCurrencyStyle];
+    
+    self.tipLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:tipAmount]];
+    self.totalLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:totalAmount]];
 }
+
 
 -(void) onSettingsButton {
     [self.navigationController pushViewController: [[SettingsViewController alloc] init] animated: YES];
