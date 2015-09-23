@@ -18,10 +18,62 @@
 - (IBAction)onTap:(id)sender;
 - (void) updateValues;
 - (void) onSettingsButton;
+- (void) present: (id) billAmount withIndex:(NSInteger) tipIndex;
 
 @end
 
 @implementation TipViewController
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+   
+    if(self) {
+        // wire up events for application active and inactive
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                selector:@selector(onApplicationDidBecomeActive)
+                                                name:UIApplicationDidBecomeActiveNotification
+                                                   object: nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(onApplicationWillResignActive)
+                                                     name: UIApplicationWillResignActiveNotification
+                                                   object: nil];
+    }
+    return self;
+}
+
+-(void) onApplicationDidBecomeActive {
+    NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
+    id billAmount = [prefs objectForKey: @"lastBillAmount"];
+    NSInteger tipIndex = [prefs integerForKey: @"lastTipIndex"];
+    NSDate* previousDate = [prefs objectForKey: @"lastBillDate"];
+    
+    // present billAmount, tipIndex
+    // if < 10 m since last saved
+    NSDate* now = [NSDate date];
+    NSInteger interval = [now timeIntervalSinceDate: previousDate];
+    if (interval < 600) {
+        [self present:billAmount withIndex:tipIndex];
+    } else {
+        self.billTextField.text = @"";
+    }
+    [self updateValues];
+}
+
+-(void) present:(id)billAmount withIndex:(NSInteger)tipIndex {
+    [self.tipControl setSelectedSegmentIndex:tipIndex];
+    self.billTextField.text = billAmount;
+    
+}
+
+
+-(void) onApplicationWillResignActive {
+    NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject: self.billTextField.text forKey:@"lastBillAmount"];
+    [prefs setInteger: self.tipControl.selectedSegmentIndex forKey:@"lastTipIndex"];
+    [prefs setObject: [NSDate date] forKey: @"lastBillDate"];
+    [prefs synchronize];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,7 +93,19 @@
         [self.billTextField becomeFirstResponder];
     }
     self.title = @"Tip Calculator";
-    
+    NSLog(@"home view will appear");
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    NSLog(@"home view did appear");
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    NSLog(@"home view will disappear");
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    NSLog(@"home view did disappear");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,6 +138,13 @@
     // set formatted locale strings
     NSNumberFormatter* nf = [[NSNumberFormatter alloc] init];
     [nf setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [nf setLocale:[NSLocale currentLocale]];
+    
+    NSString *locale = [[NSLocale currentLocale] localeIdentifier];
+    NSLog(@"current locale : %@", locale);
+    
+    NSArray* preferredLangs = [NSLocale preferredLanguages];
+    NSLog(@"preferred Langs : %@", preferredLangs);
     
     self.tipLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:tipAmount]];
     self.totalLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:totalAmount]];
