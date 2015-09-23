@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
 
 - (IBAction)onTap:(id)sender;
-- (void) updateValues;
+- (void) updateValues:(BOOL) animated;
 - (void) onSettingsButton;
 - (void) present: (id) billAmount withIndex:(NSInteger) tipIndex;
 
@@ -66,7 +66,7 @@
     } else {
         self.billTextField.text = @"";
     }
-    [self updateValues];
+    [self updateValues:YES];
 }
 
 -(void) present:(id)billAmount withIndex:(NSInteger)tipIndex {
@@ -97,7 +97,7 @@
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     int index = (int)[defaults integerForKey:@"defaultTip"];
     [self.tipControl setSelectedSegmentIndex:index];
-    [self updateValues];
+    [self updateValues:YES];
     if ([[self.billTextField text] isEqual:@""] ) {
         [self.billTextField becomeFirstResponder];
     }
@@ -138,10 +138,10 @@
 
 - (IBAction)onTap:(id)sender {
     [self.view endEditing:YES];
-    [self updateValues];
+    [self updateValues:YES];
 }
 
-- (void)updateValues {
+- (void)updateValues:(BOOL) animated {
     float billAmount = [self.billTextField.text floatValue];
     NSArray* tipValues = @[@(0.1), @(0.15), @(0.2)];
     float tipAmount = billAmount * [tipValues[self.tipControl.selectedSegmentIndex] floatValue];
@@ -158,11 +158,24 @@
     
     NSArray* preferredLangs = [NSLocale preferredLanguages];
     NSLog(@"preferred Langs : %@", preferredLangs);
-    
-    self.tipLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:tipAmount]];
-    self.totalLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:totalAmount]];
-}
+//    NSLog(@" animated: %@", animated);
+    if (animated) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.tipLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:tipAmount]];
+            self.totalLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:totalAmount]];
 
+            CGRect frame = self.totalLabel.frame;
+            frame.origin.x = 300;
+            self.totalLabel.frame = frame;
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+    } else {
+        self.tipLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:tipAmount]];
+        self.totalLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:totalAmount]];
+    }
+}
 
 -(void) onSettingsButton {
     [self.navigationController pushViewController: [[SettingsViewController alloc] init] animated: YES];
