@@ -42,6 +42,15 @@
     return self;
 }
 
+-(void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidBecomeActiveNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationWillResignActiveNotification
+                                                  object:nil];
+}
+
 -(void) onApplicationDidBecomeActive {
     NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
     id billAmount = [prefs objectForKey: @"lastBillAmount"];
@@ -94,18 +103,22 @@
     }
     self.title = @"Tip Calculator";
     NSLog(@"home view will appear");
+    [super viewWillAppear:animated];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     NSLog(@"home view did appear");
+    [super viewDidAppear:animated];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
     NSLog(@"home view will disappear");
+    [super viewWillDisappear:animated];
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
     NSLog(@"home view did disappear");
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
