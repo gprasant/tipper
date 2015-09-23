@@ -162,6 +162,11 @@
     if (animated) {
         [UIView animateWithDuration:0.4 animations:^{
             self.tipLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:tipAmount]];
+
+            CGRect tipFrame = self.tipLabel.frame;
+            tipFrame.origin.x = 300;
+            self.tipLabel.frame = tipFrame;
+            
             self.totalLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:totalAmount]];
 
             CGRect frame = self.totalLabel.frame;
