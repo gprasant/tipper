@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12559D641BAF5ED400273CE2"
+               BlueprintIdentifier = "1273EF9D1BB609AF003EF386"
                BuildableName = "tipper.app"
                BlueprintName = "tipper"
                ReferencedContainer = "container:tipper.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12559D7D1BAF5ED400273CE2"
+               BlueprintIdentifier = "1273EFB21BB609AF003EF386"
                BuildableName = "tipperTests.xctest"
                BlueprintName = "tipperTests"
                ReferencedContainer = "container:tipper.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12559D7D1BAF5ED400273CE2"
+               BlueprintIdentifier = "1273EFB21BB609AF003EF386"
                BuildableName = "tipperTests.xctest"
                BlueprintName = "tipperTests"
                ReferencedContainer = "container:tipper.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "12559D641BAF5ED400273CE2"
+            BlueprintIdentifier = "1273EF9D1BB609AF003EF386"
             BuildableName = "tipper.app"
             BlueprintName = "tipper"
             ReferencedContainer = "container:tipper.xcodeproj">
@@ -75,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "12559D641BAF5ED400273CE2"
+            BlueprintIdentifier = "1273EF9D1BB609AF003EF386"
             BuildableName = "tipper.app"
             BlueprintName = "tipper"
             ReferencedContainer = "container:tipper.xcodeproj">
@@ -93,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "12559D641BAF5ED400273CE2"
+            BlueprintIdentifier = "1273EF9D1BB609AF003EF386"
             BuildableName = "tipper.app"
             BlueprintName = "tipper"
             ReferencedContainer = "container:tipper.xcodeproj">
