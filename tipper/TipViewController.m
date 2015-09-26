@@ -72,7 +72,6 @@
 -(void) present:(id)billAmount withIndex:(NSInteger)tipIndex {
     [self.tipControl setSelectedSegmentIndex:tipIndex];
     self.billTextField.text = billAmount;
-    
 }
 
 
@@ -86,7 +85,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self action:@selector(onSettingsButton)];
     // Do any additional setup after loading the view from its nib.
 
     [super viewDidLoad];
@@ -162,12 +163,11 @@
     if (animated) {
         [UIView animateWithDuration:0.4 animations:^{
             self.tipLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:tipAmount]];
-
+            self.totalLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:totalAmount]];
+            
             CGRect tipFrame = self.tipLabel.frame;
             tipFrame.origin.x = 300;
             self.tipLabel.frame = tipFrame;
-            
-            self.totalLabel.text = [nf stringFromNumber: [[NSNumber alloc] initWithFloat:totalAmount]];
 
             CGRect frame = self.totalLabel.frame;
             frame.origin.x = 300;
