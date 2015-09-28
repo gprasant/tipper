@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12736E1F1BB7634500923CAA /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12736E1E1BB7634500923CAA /* TipViewController.swift */; };
 		1273EFA41BB609AF003EF386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1273EFA31BB609AF003EF386 /* AppDelegate.swift */; };
 		1273EFA61BB609AF003EF386 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1273EFA51BB609AF003EF386 /* ViewController.swift */; };
 		1273EFA91BB609AF003EF386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1273EFA71BB609AF003EF386 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12736E1E1BB7634500923CAA /* TipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
 		1273EF9E1BB609AF003EF386 /* tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1273EFA21BB609AF003EF386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1273EFA31BB609AF003EF386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				1273EFAA1BB609AF003EF386 /* Images.xcassets */,
 				1273EFAC1BB609AF003EF386 /* LaunchScreen.xib */,
 				1273EFA11BB609AF003EF386 /* Supporting Files */,
+				12736E1E1BB7634500923CAA /* TipViewController.swift */,
 			);
 			path = tipper;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1273EFA61BB609AF003EF386 /* ViewController.swift in Sources */,
+				12736E1F1BB7634500923CAA /* TipViewController.swift in Sources */,
 				1273EFA41BB609AF003EF386 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +411,7 @@
 				1273EFBF1BB609AF003EF386 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1273EFC01BB609AF003EF386 /* Build configuration list for PBXNativeTarget "tipperTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +420,7 @@
 				1273EFC21BB609AF003EF386 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
