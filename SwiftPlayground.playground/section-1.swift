@@ -46,3 +46,29 @@ var greeting = "Hello! "
 if let name = optionalName {
     greeting = "Hello, \(name)"
 }
+
+let vegetable = "red pepper"
+
+switch vegetable {
+    case "celery":
+        let comment = "the vegetable is a celery stick. Not so tasty"
+    case "pumpkin", "melon":
+        let comment = "is it halloween yet ?"
+    default:
+        let comment = "everything tastes good in soup."
+}
+
+let interestingNumbers = [
+    "prime": [2, 3, 5, 7, 11, 13],
+    "fibonacci": [1, 1, 2, 3, 5, 8],
+    "squares": [1, 4 ,9, 16, 25]
+]
+var maximum = 0;
+for (name, numbers) in interestingNumbers {
+    for (n) in numbers {
+        if (n > maximum) {
+            maximum = n
+        }
+    }
+}
+maximum
